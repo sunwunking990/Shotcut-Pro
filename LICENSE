@@ -2,9 +2,12 @@ SHOTCUTCPP PROPRIETARY SOFTWARE LICENSE AGREEMENT
 
 Copyright (c) 2024-2026 ShotcutCPP Development Team. All rights reserved.
 
-This software is proprietary and confidential. Unauthorized copying,
+This software is currently proprietary and confidential. Unauthorized copying,
 distribution, or modification of this software, in whole or in part, is
 strictly prohibited.
+
+**NOTE: This project is planned for future open-source release.**
+**Current status: Private development for collaboration purposes.**
 
 IMPORTANT - READ CAREFULLY:
 
@@ -15,7 +18,7 @@ associated media, printed materials, and "online" or electronic documentation
 ("Software").
 
 By installing, copying, or otherwise using the Software, you agree to be bound
-by the terms of this License. If you do not agree to the terms of this
+by the terms of this License. If you do not agree to terms of this
 License, do not install or use the Software.
 
 LICENSE GRANT
@@ -23,7 +26,7 @@ LICENSE GRANT
 
 ShotcutCPP Development Team grants you a non-exclusive, non-transferable,
 royalty-free license to use the Software solely for internal business
-purposes, subject to the restrictions set forth in this License.
+purposes, subject to restrictions set forth in this License.
 
 RESTRICTIONS
 ------------
@@ -35,6 +38,12 @@ You may not:
 - Rent, lease, or transfer the Software to any third party
 - Remove any proprietary notices, labels, or marks from the Software
 - Use the Software in any manner that violates applicable laws
+
+**Future Open Source Release Plan:**
+- This project is intended for eventual open-source release under a permissive license
+- Current private status is for development and collaboration purposes only
+- All development work, documentation, and issues are preserved for transparency
+- Complete project history will be maintained for future open-source transition
 
 OWNERSHIP
 ---------
@@ -87,8 +96,10 @@ This License constitutes the entire agreement between you and ShotcutCPP
 Development Team with respect to the Software and supersedes all prior
 agreements, whether written or oral, regarding the Software.
 
-For inquiries regarding this license, please contact:
+For inquiries regarding this license or open-source transition plans, please contact:
 ShotcutCPP Development Team
 [Contact Information]
 
 © 2024-2026 ShotcutCPP Development Team. All rights reserved.
+
+**Development Status: Private - Planned for Open Source Release**
