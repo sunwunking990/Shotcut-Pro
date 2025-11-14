@@ -229,26 +229,6 @@ The project includes comprehensive demo applications showcasing each system:
 
 This project is proprietary software. All rights reserved.
 
-## 🙏 Acknowledgments
-
-### Open Source Projects
-- **FFmpeg**: Media format support
-- **Vulkan**: Cross-platform graphics API
-- **NVIDIA**: Video Codec SDK and GPU acceleration
-- **FreeType**: Text rendering engine
-- **HarfBuzz**: Text shaping engine
-
-### Inspiration
-- Original **Shotcut** project for feature inspiration
-- **Adobe Premiere Pro** for professional workflow design
-- **DaVinci Resolve** for color grading inspiration
-
-## 📞 Contact
-
-For internal team inquiries:
-- **Project Lead**: [Team Lead]
-- **Technical Lead**: [Tech Lead]
-- **Security Team**: [Security Team]
 
 ---
 
