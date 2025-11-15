@@ -1,10 +1,8 @@
-# ShotcutCPP - Professional Video Editor
+# ShotcutCPP - Modern Video Editor Rewrite
 
 <div align="center">
 
-![ShotcutCPP Logo](https://via.placeholder.com/400x200/1a1a1a/00ff00?text=ShotcutCPP)
-
-**A professional-grade, proprietary C++ video editor built from scratch**
+**A modern C++23 rewrite of Shotcut video editor - Currently Under Active Development**
 
 [![C++23](https://img.shields.io/badge/C%2B%2B-23-blue.svg)](https://en.wikipedia.org/wiki/C%2B%2B23)
 [![Vulkan](https://img.shields.io/badge/Vulkan-1.3+-purple.svg)](https://www.vulkan.org/)
@@ -12,46 +10,107 @@
 [![License](https://img.shields.io/badge/License-Proprietary-red.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux-lightgrey.svg)](#platforms)
 
-**Status:** 🎉 Production Ready (95% Complete)
+**Status:** 🚧 **Active Development** - Not Production Ready
 
 </div>
 
+---
+
+## ⚠️ Development Status Notice
+
+This project is **currently under active development** and is **not yet functional** for production use. While significant architectural work has been completed, the codebase has compilation issues and incomplete integrations that are being actively resolved.
+
+**What works:**
+- Core architecture and framework design
+- Individual system components (with some compilation issues)
+- Project structure and build system foundation
+
+**What doesn't work yet:**
+- Complete compilation across all modules
+- Full system integration
+- End-to-end video editing workflow
+- Many advertised features are framework-only (not yet functional)
+
+**Current Focus:** Resolving compilation errors and establishing a working minimal viable product (MVP).
+
+---
+
 ## Overview
 
-ShotcutCPP is a complete rewrite of Shotcut as a professional-grade, proprietary video editor built entirely in modern C++23. Designed to compete directly with Adobe Premiere Pro and DaVinci Resolve, it delivers exceptional performance through direct GPU control and hardware acceleration.
+### What is ShotcutCPP?
 
-## ✨ Key Features
+ShotcutCPP is an ambitious project to create a modern, professional-grade video editor by reimagining Shotcut from the ground up using cutting-edge C++23 features and modern graphics APIs. This is a complete rewrite, not an update to the existing Shotcut application.
 
-### 🚀 Performance & Architecture
-- **Modern C++23**: Leverages latest C++ features for optimal performance
-- **Vulkan-First Rendering**: Direct GPU control with unified UI/video pipeline
-- **Hardware Acceleration**: NVENC/NVDEC for all codec operations
-- **8K 60fps Editing**: Sub-frame latency (< 16ms) for professional workflows
-- **Zero-Copy Workflows**: Optimized memory management throughout
+### Vision & Goals
 
-### 🎬 Professional Video Editing
-- **Multi-track Timeline**: Unlimited tracks with ECS-based architecture
-- **Advanced Color Correction**: Professional scopes and color grading
-- **GPU Effects Pipeline**: Real-time effects with CUDA acceleration
-- **Professional Audio**: Low-latency multi-track audio mixing
-- **Hardware Export**: Real-time 4K/8K export with NVENC
+The goal of ShotcutCPP is to build a video editor that:
 
-### 🔒 Security & Stability
-- **Memory Safety**: Modern C++ practices with RAII throughout
-- **Sandboxed Processing**: Secure media file parsing
-- **Compiler Hardening**: OpenSSF security guidelines implemented
-- **Crash Isolation**: Robust error handling and recovery
+- **Leverages Modern Technology**: Built with C++23, Vulkan graphics API, and modern architecture patterns
+- **Maximizes Performance**: Hardware-accelerated processing using GPU compute (NVENC/NVDEC, CUDA, Vulkan)
+- **Professional Capabilities**: Aims to provide features competitive with Adobe Premiere Pro and DaVinci Resolve
+- **Cross-Platform**: Designed for Windows, Linux, and potentially macOS
+- **Memory Safe**: Modern C++ practices with RAII, smart pointers, and comprehensive error handling
 
-## 🏗️ Architecture
+### Key Architectural Features (Planned/In Development)
 
-### Core Systems
+- **Vulkan-First Rendering**: Direct GPU control for both UI and video processing
+- **Entity Component System (ECS)**: Modern timeline architecture for scalability
+- **Hardware Acceleration**: NVIDIA Video Codec SDK integration for encoding/decoding
+- **Professional Audio**: 32-bit float processing with low-latency mixing
+- **Modular Design**: Clean separation between UI, video processing, audio, effects, and timeline systems
+
+---
+
+## 🎯 Current Development Phase
+
+### Project Completion: ~75% (Framework Architecture)
+
+The project has established the architectural framework for most systems but requires significant implementation work to become functional:
+
+#### System Status Overview
+
+| Component | Architecture | Implementation | Integration | Status |
+|-----------|-------------|----------------|-------------|--------|
+| **Core Framework** | ✅ Complete | ✅ Complete | ✅ Complete | **Working** |
+| **Build System** | ✅ Complete | ✅ Complete | ✅ Complete | **Working** |
+| **UI Framework** | ✅ Complete | ⚠️ Partial | ❌ Incomplete | **In Progress** |
+| **Video Pipeline** | ✅ Complete | ⚠️ Partial | ❌ Incomplete | **In Progress** |
+| **Audio Engine** | ✅ Complete | ⚠️ Partial | ❌ Incomplete | **In Progress** |
+| **Timeline ECS** | ✅ Complete | ⚠️ Partial | ❌ Incomplete | **In Progress** |
+| **Effects System** | ✅ Complete | ⚠️ Partial | ❌ Incomplete | **In Progress** |
+| **Export System** | ✅ Complete | ⚠️ Partial | ❌ Incomplete | **In Progress** |
+
+### Known Critical Issues
+
+As documented in `docs/Project_Status_Report.md`, the project currently has:
+
+- **Compilation Failures**: Multiple components have unresolved compilation errors
+- **Type Resolution Issues**: Forward declaration and namespace issues in several modules
+- **Integration Gaps**: Individual systems work in isolation but integration is incomplete
+- **Missing Implementations**: Many framework components need actual functionality implemented
+
+---
+
+## 🏗️ Architecture Overview
+
+### Technology Stack
+
+- **Language**: C++23 (requires GCC 13+, Clang 16+, or MSVC 2022+)
+- **Graphics API**: Vulkan 1.3+ (primary), DirectX 12 (Windows fallback planned)
+- **Build System**: CMake 3.20+ with modular targets
+- **GPU Acceleration**: NVIDIA Video Codec SDK 12+ (optional)
+- **Audio Processing**: Custom 32-bit float pipeline
+- **Video Codecs**: FFmpeg integration (optional)
+
+### Core Systems Architecture
+
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
 │   UI Framework  │    │ Video Pipeline  │    │ Audio Engine    │
 │                 │    │                 │    │                 │
-│ • Vulkan UI     │◄──►│ • NVENC/NVDEC   │◄──►│ • 32-bit Float  │
-│ • Layout Engine │    │ • Frame Buffer  │    │ • 64 Channels   │
-│ • Theme System  │    │ • Effects Chain │    │ • <10ms Latency │
+│ • Vulkan UI     │◄──►│ • Decode/Encode │◄──►│ • Multi-track   │
+│ • Layout Engine │    │ • Frame Buffer  │    │ • Effects       │
+│ • Widgets       │    │ • GPU Processing│    │ • Mixing        │
 └─────────────────┘    └─────────────────┘    └─────────────────┘
          │                       │                       │
          └───────────────────────┼───────────────────────┘
@@ -59,43 +118,39 @@ ShotcutCPP is a complete rewrite of Shotcut as a professional-grade, proprietary
                     ┌─────────────────┐
                     │  Timeline ECS   │
                     │                 │
-                    │ • Entity System │
-                    │ • Component     │
-                    │ • System Pipe   │
+                    │ • Entities      │
+                    │ • Components    │
+                    │ • Systems       │
                     └─────────────────┘
 ```
 
-### Technology Stack
-- **Language**: C++23 (GCC 13+, Clang 16+, MSVC 2022+)
-- **Graphics**: Vulkan 1.3+ (DirectX 12 fallback on Windows)
-- **Build System**: CMake 3.20+ with security hardening
-- **GPU SDK**: NVIDIA Video Codec SDK 12+
-- **Audio**: Professional 32-bit float processing pipeline
+---
 
-## 🚀 Quick Start
+## 🚀 Building from Source
 
 ### Prerequisites
 
-#### Minimum System Requirements
-- **OS**: Windows 10/11 or Linux (Zorin OS/Ubuntu 20.04+)
-- **GPU**: NVIDIA RTX 4090+ (for 8K editing)
-- **RAM**: 16GB+ (32GB+ recommended for 8K)
-- **Storage**: NVMe SSD for video caching
-- **CPU**: Modern x86-64 with AVX2 support
+#### System Requirements (Development)
+- **OS**: Windows 10/11 or Linux (Ubuntu 20.04+, Arch, etc.)
+- **GPU**: NVIDIA GPU recommended for hardware acceleration testing
+- **RAM**: 8GB+ (16GB recommended)
+- **Storage**: 5GB for source and build artifacts
 
 #### Development Dependencies
-- **Compiler**: GCC 13+ / Clang 16+ / MSVC 2022+
+- **Compiler**:
+  - Linux: GCC 13+ or Clang 16+
+  - Windows: MSVC 2022+ (Visual Studio 2022)
 - **CMake**: 3.20 or higher
 - **Vulkan SDK**: 1.3 or higher
 - **NVIDIA SDK**: Video Codec SDK 12+ (optional, for hardware acceleration)
 - **FFmpeg**: 4.4+ (optional, for codec support)
 
-### Building from Source
+### Build Instructions
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/ShotcutCPP.git
-cd ShotcutCPP
+git clone https://github.com/yourusername/Shotcut-Pro.git
+cd Shotcut-Pro
 
 # Create build directory
 mkdir build && cd build
@@ -103,139 +158,150 @@ mkdir build && cd build
 # Configure with CMake
 cmake .. -DCMAKE_BUILD_TYPE=Release
 
-# Build
+# Build (note: currently has compilation errors)
 cmake --build . --config Release -j$(nproc)
-
-# Run demo applications
-./bin/shotcut_ui_demo
-./bin/shotcut_video_demo
 ```
 
-### Build Configuration
+### Build Configuration Options
 
 | Option | Description | Default |
 |--------|-------------|---------|
-| `CMAKE_BUILD_TYPE` | Release/Debug | Release |
+| `CMAKE_BUILD_TYPE` | Release/Debug/RelWithDebInfo | Release |
 | `ENABLE_VULKAN` | Enable Vulkan support | ON |
 | `ENABLE_CUDA` | Enable CUDA acceleration | ON |
 | `ENABLE_FFMPEG` | Enable FFmpeg integration | ON |
-| `ENABLE_SECURITY_HARDENING` | Enable OpenSSF hardening | ON |
+| `ENABLE_SECURITY_HARDENING` | Enable compiler security flags | ON |
+
+**Note**: Due to current compilation issues, not all targets will build successfully.
+
+---
 
 ## 📁 Project Structure
 
 ```
-ShotcutCPP/
+Shotcut-Pro/
 ├── src/                    # Source code
 │   ├── core/              # Core application framework
-│   ├── ui/                # User interface framework
+│   ├── ui/                # User interface components
 │   ├── video/             # Video processing pipeline
 │   ├── audio/             # Audio processing engine
 │   ├── timeline/          # Timeline ECS system
 │   ├── effects/           # GPU effects processing
-│   ├── rendering/         # Vulkan rendering context
-│   ├── platform/          # Platform abstraction layer
-│   └── utils/             # Utility functions
+│   ├── rendering/         # Vulkan rendering
+│   └── platform/          # Platform abstraction layer
 ├── include/               # Public headers
-├── cmake/                 # CMake modules and security flags
-├── external/              # External dependencies
+├── cmake/                 # CMake modules
 ├── docs/                  # Documentation
-├── memory-bank/           # Project documentation and context
-├── tests/                 # Test suite
-├── resources/             # Application resources
-└── shaders/               # Vulkan shaders
+│   ├── guides/           # Development phase guides
+│   ├── CODEBASE_ANALYSIS.md
+│   └── Project_Status_Report.md
+├── memory-bank/           # Project context and planning
+├── external/              # External dependencies (planned)
+├── tests/                 # Test suite (to be implemented)
+└── CMakeLists.txt         # Root build configuration
 ```
 
-## 🎯 Development Status
+---
 
-### Project Completion: 95% Production Ready
+## 📖 Documentation
 
-#### ✅ Completed Phases
+- **Project Status**: See `docs/Project_Status_Report.md` for detailed current status
+- **Codebase Analysis**: See `docs/CODEBASE_ANALYSIS.md` for architecture details
+- **Phase Guides**: See `docs/guides/` for development phase documentation
+- **Progress Tracking**: See `memory-bank/progress.md` for historical progress
 
-| Phase | Status | Completion |
-|-------|--------|------------|
-| **Phase 1**: Foundation | ✅ Complete | 100% |
-| **Phase 2**: UI Framework | ✅ Complete | 100% |
-| **Phase 3**: Video Processing | ✅ Complete | 100% |
-| **Phase 4**: Timeline & Editing | ✅ Complete | 100% |
-| **Phase 5**: Effects & Audio | ✅ Complete | 100% |
-| **Phase 6**: Export & Security | ✅ Complete | 95% |
-
-### 🔄 In Progress
-- Timeline-to-export integration implementation
-- Effects rendering pipeline integration
-- Audio-video synchronization in export
-
-### 📊 Performance Metrics
-- **Startup Time**: ~2.0 seconds (Target: <3s) ✅
-- **Effects Processing**: 60+ FPS at 1080p ✅
-- **Audio Latency**: <10ms processing latency ✅
-- **Memory Usage**: Optimized with pooling ✅
-
-## 🎮 Demo Applications
-
-The project includes comprehensive demo applications showcasing each system:
-
-```bash
-# UI Framework Demo
-./bin/shotcut_ui_demo
-
-# Video Processing Demo
-./bin/shotcut_video_demo
-
-# Timeline System Demo
-./bin/shotcut_timeline_demo
-
-# Effects & Audio Demo
-./bin/shotcut_effects_demo
-
-# Complete Integration Demo
-./bin/shotcut_ui_complete_demo
-```
-
-## 🔧 Development Guidelines
-
-### Code Standards
-- **C++23**: Use latest C++ features appropriately
-- **RAII**: All resources managed with RAII patterns
-- **Memory Safety**: Smart pointers and container usage
-- **Error Handling**: Comprehensive error handling throughout
-- **Performance**: Profile-optimized code paths
-
-### Security Guidelines
-- **Input Validation**: All external inputs validated
-- **Memory Safety**: No raw pointers, proper bounds checking
-- **Compiler Hardening**: All security flags enabled
-- **Sandboxing**: Media processing isolated from main application
+---
 
 ## 🤝 Contributing
 
-**Note**: This is a proprietary project. Contributing guidelines are for internal development team members only.
+**Note**: This is currently a development project. The codebase is not yet stable enough for external contributions.
 
-### Development Workflow
+If you're interested in following development or contributing in the future:
+
+1. Check the `docs/Project_Status_Report.md` for current status
+2. Review open issues and development roadmap
+3. Reach out to discuss potential contributions
+
+### Development Workflow (When Ready)
 1. Create feature branch from `develop`
-2. Implement changes with comprehensive tests
-3. Ensure all builds pass on all platforms
+2. Implement changes following C++23 best practices
+3. Ensure code compiles on target platforms
 4. Submit pull request with detailed description
-5. Code review and security audit required
 
-### Code Review Checklist
-- [ ] Modern C++23 practices followed
-- [ ] Memory safety verified
-- [ ] Performance impact assessed
-- [ ] Security implications considered
-- [ ] Documentation updated
+---
+
+## 🎯 Roadmap
+
+### Immediate Priorities (Next 1-2 Months)
+
+1. **Resolve Compilation Issues**
+   - Fix NVIDIA SDK integration errors
+   - Resolve frame buffer system issues
+   - Fix export system type resolution
+   - Address namespace and type conflicts
+
+2. **Establish MVP**
+   - Get all modules compiling
+   - Basic integration between systems
+   - Simple end-to-end workflow (import → edit → export)
+
+3. **Core Functionality**
+   - Functional video playback
+   - Basic timeline editing
+   - Simple effects application
+   - Basic export capability
+
+### Medium Term (3-6 Months)
+
+- Complete hardware acceleration integration
+- Advanced timeline features
+- Professional effects pipeline
+- Multi-track audio mixing
+- Cross-platform testing and optimization
+
+### Long Term (6-12 Months)
+
+- Performance optimization for 4K/8K workflows
+- Advanced color grading tools
+- Plugin system architecture
+- Comprehensive testing suite
+- User documentation and tutorials
+
+---
 
 ## 📄 License
 
 This project is proprietary software. All rights reserved.
 
+See [LICENSE](LICENSE) file for details.
+
+---
+
+## ❓ FAQ
+
+### Is this ready to use?
+**No.** This project is in active development and is not functional for production use.
+
+### When will it be ready?
+The timeline depends on resolving current technical issues. Check `docs/Project_Status_Report.md` for updates.
+
+### How does this relate to the original Shotcut?
+This is a complete rewrite from scratch, not based on the existing Shotcut codebase. It's inspired by Shotcut's philosophy but built with modern technology.
+
+### Can I try it?
+You can attempt to build from source, but expect compilation errors and incomplete functionality.
+
+### How can I help?
+The project isn't ready for external contributions yet, but feedback and interest are appreciated.
 
 ---
 
 <div align="center">
 
-**Built with ❤️ in C++23**
+**Built with modern C++23 and Vulkan**
 
-© 2024-2026 ShotcutCPP Development Team. All rights reserved.
+*Under Active Development - Check back for updates*
+
+© 2024-2025 ShotcutCPP Development Team
 
 </div>
